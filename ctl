@@ -11,7 +11,7 @@ echo $TMPDIR
 CMD="$1";shift
 
 case "$CMD" in
-    worktree)
+    worktree) # ./ctl worktree hello <(echo 'echo eoq > teste && git add -A && git commit -sm "test" --allow-empty')
         BRANCH="$1"; shift
         WORKTREE_DIR="$TMPDIR/$BRANCH"
         if [ ! -d "$WORKTREE_DIR" ]; then
