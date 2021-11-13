@@ -1,6 +1,9 @@
 #+TITLE: Research on the subject
 
 Put here research about where to get given information about each index
+
+PS: for some reason this file looks broken on GitHub web
+
 * Pypi (python)
   **Metadata**: https://pypi.org/pypi/{name}/json
   **Hash supported**: MD5
