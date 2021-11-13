@@ -1,0 +1,49 @@
+#+TITLE: Research on the subject
+
+Put here research about where to get given information about each index
+* Pypi (python)
+  **Metadata**: https://pypi.org/pypi/{name}/json
+  **Hash supported**: MD5
+   No way to get a full dump of the index
+   Repology can give a 60MB zstd JSON but it's always the latest revision
+** TODO Find a way to download an full index of the packages
+*** TODO Find a way to automate the index updates
+* NPM (js/ts/...)
+  **Metadata**: https://registry.npmjs.org/{name}
+  **Hash supported**: SHA1
+** TODO Find a way to automate the index of the packages
+*** TODO Find a way to automate the index updates
+* MELPA (elisp)
+  **Metadata**: https://melpa.org/recipes.json
+  References git repos, no version management
+** TODO Analyse what should be done in this case
+*** TODO Find inspiration on the approach nixpkgs is using
+* Cargo (rust)
+  **Metadata**: https://crates.io/api/v1/crates/{name}/versions
+  **Metadata repo**: https://github.com/rust-lang/crates.io-index/
+  **Hash supported**: SHA256
+  **Aprox metadata size**: ~50MB
+  I think we have everything we need, just pin the definition repo and start using
+** OBS
+  Has metadata endpoint but it's better to use via the vendorized github index
+  Cargo.lock has a sha256 hash of every dependency and the download url can be infered from the data already provided
+  The metadata repo uses subdirectories for better tree management
+  Ex: [[https://github.com/rust-lang/crates.io-index/blob/master/so/la/solana][Solana]]
+* RubyGems (ruby)
+  **Metadata**: https://rubygems.org/api/v1/versions/{name}.json
+  **Download** https://rubygems.org/gems/{name}-{version}.gem
+  **Hash supported**: SHA256
+** TODO find a way to dump the index with versions
+*** TODO find a way to automate minor bumps
+** TODO find a way to parse dependencies
+* OPAM (OCaml)
+  Pseudoapi: https://github.com/ocaml/opam-repository
+** TODO parse dependency metadata from the format used by ocaml
+** TODO find a way to dump the index with versions
+* What is missing yet
+** TODO Repos
+*** TODO Maven (JVM)
+*** TODO Hackage (haskell)
+*** TODO VSCode extensions
+*** TODO Pub (dart/flutter)
+*** TODO Hex (elixir/erlang)
