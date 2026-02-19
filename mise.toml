@@ -1,0 +1,57 @@
+[tools]
+node = "24.13.1"
+shellcheck = "0.11.0"
+shfmt = "3.12.0"
+actionlint = "1.7.11"
+"npm:prettier" = "3.8.1"
+
+[tasks.install]
+description = "Install dependencies"
+run = "mise install"
+sources = ["mise.toml"]
+
+[tasks."lint:shellcheck"]
+description = "Lint shell scripts"
+run = "shellcheck ctl"
+sources = ["ctl"]
+
+[tasks."lint:actionlint"]
+description = "Lint GitHub Actions"
+run = "actionlint"
+sources = [".github/workflows/*.yml"]
+
+[tasks."lint:prettier"]
+description = "Check formatting with Prettier"
+run = "prettier --check ."
+sources = ["**/*.{md,yml,json,js,ts}"]
+
+[tasks.lint]
+description = "Run all linters"
+depends = ["lint:*"]
+
+[tasks."fmt:shfmt"]
+description = "Format shell scripts"
+run = "shfmt -w -i 2 -ci ctl"
+sources = ["ctl"]
+
+[tasks."fmt:prettier"]
+description = "Format code with Prettier"
+run = "prettier --write ."
+sources = ["**/*.{md,yml,json,js,ts}"]
+
+[tasks.fmt]
+description = "Run all formatters"
+depends = ["fmt:*"]
+
+[tasks.test]
+description = "Run tests"
+run = "bash -n ctl"
+sources = ["ctl"]
+
+[tasks.codegen]
+description = "Generate code"
+run = "echo 'No codegen'"
+
+[tasks.ci]
+description = "Run CI pipeline"
+depends = ["lint", "test"]
