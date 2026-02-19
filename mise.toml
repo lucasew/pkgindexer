@@ -1,5 +1,5 @@
 [tools]
-node = "24.13.1"
+node = "22.14.0"
 shellcheck = "0.11.0"
 shfmt = "3.12.0"
 actionlint = "1.7.11"
@@ -13,6 +13,11 @@ sources = ["mise.toml"]
 [tasks."lint:shellcheck"]
 description = "Lint shell scripts"
 run = "shellcheck ctl"
+sources = ["ctl"]
+
+[tasks."lint:shfmt"]
+description = "Check shell script formatting"
+run = "shfmt -d -i 2 -ci ctl"
 sources = ["ctl"]
 
 [tasks."lint:actionlint"]
