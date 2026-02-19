@@ -56,6 +56,7 @@ sources = ["ctl"]
 [tasks.codegen]
 description = "Generate code"
 run = "echo 'No codegen'"
+depends = ["fmt"]
 
 [tasks.ci]
 description = "Run CI pipeline"
