@@ -1,0 +1,2 @@
+[tasks]
+test = "bash tests/repro_ctl.sh"

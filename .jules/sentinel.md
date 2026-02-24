@@ -1,0 +1,1 @@
+- 2024-05-21: [High/Insecure Temp Dir] Avoid predictable paths in shared directories; use mktemp -d or user-specific paths.
