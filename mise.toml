@@ -1,0 +1,18 @@
+[tools]
+shellcheck = "0.10.0"
+shfmt = "3.10.0"
+actionlint = "1.7.5"
+
+[tasks.ci]
+depends = ["lint"]
+
+[tasks.lint]
+run = """
+shellcheck ctl
+shfmt -d ctl
+"""
+
+[tasks.fmt]
+run = """
+shfmt -w ctl
+"""
